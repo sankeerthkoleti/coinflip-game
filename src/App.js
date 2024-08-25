@@ -14,7 +14,7 @@ const flipCoin = async () => {
       setResult("Please enter a bet amount and select a side.");
       return;
   }
-
+//
   if (window.ethereum) {
       const provider = new ethers.BrowserProvider(window.ethereum); // Use BrowserProvider for MetaMask
       const signer = await provider.getSigner();
