@@ -1,0 +1,16 @@
+contract CoinFlip {
+    enum Side { Heads, Tails }
+
+    function flipCoin(Side _side) public payable returns (bool) {
+        require(msg.value > 0, "Must send some ether to play");
+        
+        // Randomly select a side (for demo purposes)
+        Side result = (block.timestamp % 2 == 0) ? Side.Heads : Side.Tails;
+
+        if (result == _side) {
+            payable(msg.sender).transfer(msg.value * 2); // Win: double the amount
+            return true;
+        }
+        return false; // Lose
+    }
+}

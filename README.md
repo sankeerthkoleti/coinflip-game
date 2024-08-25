@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+Coin Flip Game
+This is a simple decentralized application (dApp) that allows users to bet on a coin flip using Ethereum. The game is hosted on Vercel and uses the Ethereum blockchain for handling bets and determining outcomes.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Table of Contents
+Getting started
+Project Structure
+Requirements
+Smart Contract Setup
+Frontend Setup
 
-## Available Scripts
 
-In the project directory, you can run:
+Getting Started
+This project is a basic example of a decentralized application built with React and Ethers.js, interacting with an Ethereum smart contract. It allows users to connect their MetaMask wallet, place a bet, and flip a coin to potentially win their bet.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Structure:
+coinflip-game/
+│
+├── cache       
+├── src/
+│   ├── App.js              # Main React 
+│   ├── App.css
+|   ├── App.test.js
+|   ├── coinflip.json        # ABM file 
+│   └── ...
+├── public/
+│   └── ...                 # Static 
+├── contractcode            # smart contract code
+configurations
+├── package.json            # Node.js dependencies
+└── README.md               # Project documentation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Prerequisites
+Before running this application, ensure you have the following installed:
 
-### `npm test`
+Node.js (v14 or higher)
+MetaMask browser extension:
+install metamask in your browser.
+A connection to solana test network 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Basic knowledge of React and blockchain development
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Smart contract:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+contract CoinFlip {
+    enum Side { Heads, Tails }
 
-### `npm run eject`
+    function flipCoin(Side _side) public payable returns (bool) {
+        require(msg.value > 0, "Must send some ether to play");
+        
+        // Randomly select a side (for demo purposes)
+        Side result = (block.timestamp % 2 == 0) ? Side.Heads : Side.Tails;
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+        if (result == _side) {
+            payable(msg.sender).transfer(msg.value * 2); // Win: double the amount
+            return true;
+        }
+        return false; // Lose
+    }
+}
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+deployed smart contract using remix 
+fauset used - solana 
+network - solana
+ABM file:
+[
+	{
+		"inputs": [
+			{
+				"internalType": "enum CoinFlip.Side",
+				"name": "_side",
+				"type": "uint8"
+			}
+		],
+		"name": "flipCoin",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "payable",
+		"type": "function"
+	}
+]
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+if you wanted to deploy again make change of contract address in main code. 

@@ -1,38 +1,186 @@
-.App {
-  text-align: center;
+/* .back{
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.g{
   display: flex;
+  flex-direction: column;
+}
+.h1{
+  font-size:50px;;
+} */
+.c{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  background-image:url("https://www.shutterstock.com/shutterstock/photos/2411784249/display_1500/stock-photo-casino-trading-cards-bitcoin-crypto-gold-black-roulette-poker-balckjack-baccarat-d-render-d-2411784249.jpg")
+}
+.container {
+  display: flex;
+  border-radius:20px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 70vh;
+  width:25vw;
+  background-color: #222;
+  color: #fff;
+  font-family: sans-serif;
+  padding:20px;
 }
 
-.App-link {
-  color: #61dafb;
+.coin-container {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  margin-bottom: 20px;
+}
+.f{
+  font-size:40px;
+}
+.coin {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #fdd835;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.coin img {
+  width: 60px;
+  height: 60px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  width: 340vw;
+  margin-bottom: 10px;
+}
+
+.input-label {
+  margin-bottom: 5px;
+}
+
+.input-field {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fdd835;
+  color: #222;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+
+
+
+.coins {
+  display: flex;
+  gap: 20px;
+  width:80%;
+  margin-top:20px;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.coin {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #ffc107;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease-in-out;
+}
+
+.coin img {
+  width: 80%;
+  height: 80%;
+}
+
+.coin.heads {
+  transform: rotateY(0deg);
+}
+
+.coin.tails {
+  transform: rotateY(180deg);
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.inputs label {
+  margin-bottom: 5px;
+}
+
+.inputs input {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+}
+.i{
+  width:20vw;
+  font-size:20px;
+}
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffc107;
+  color: #222;
+  font-weight:bold;
+  cursor: pointer;
+  font-size: 25px;
+  color:rgb(170, 44, 44);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.result {
+  margin-top: 20px;
+  font-size: 30px;
+}
+.o{
+  background-color:#333;
+  color: #bab0b0;
+  width: 21vw;
+  padding:10px;
+  border-radius:5px;
+  border:none;
+  margin-bottom:20px;
+  font-size:18px;
 }
